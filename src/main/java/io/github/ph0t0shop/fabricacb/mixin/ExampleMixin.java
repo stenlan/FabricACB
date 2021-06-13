@@ -1,4 +1,4 @@
-package net.fabricmc.example.mixin;
+package io.github.ph0t0shop.fabricacb.mixin;
 
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
