@@ -19,7 +19,12 @@ public class CommandManagerMixin {
 	private boolean canUseRedirection(CommandNode<ServerCommandSource> commandNode, Object objSource) {
 		ServerCommandSource source = (ServerCommandSource) objSource;
 		ServerPlayerEntity player;
-		player = source.getPlayer();
+		try {
+			 player = source.getPlayer();
+		} catch (CommandSyntaxException e) {
+			FabricACB.LOGGER.warn("Trying to send command tree to non-player. Something is wrong!");
+			return commandNode.canUse(source);
+		}
 		
 		if (commandNode instanceof LiteralCommandNode<ServerCommandSource> node) {
 			String literal = node.getLiteral();
